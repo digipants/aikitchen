@@ -1,14 +1,14 @@
 import type { MetadataRoute } from "next";
 
 export default function robots(): MetadataRoute.Robots {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aikitchen.in";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://aikitchen.co";
   return {
     rules: [
       {
         userAgent: "*",
-        allow: "/"
-      }
+        allow: "/",
+      },
     ],
-    sitemap: `${siteUrl}/sitemap.xml`
+    sitemap: `${siteUrl}/sitemap.xml`,
   };
 }

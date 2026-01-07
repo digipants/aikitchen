@@ -3,7 +3,16 @@
 import React, { useMemo, useState } from "react";
 import TopNav from "@/components/TopNav";
 import SiteFooter from "@/components/SiteFooter";
-import { Badge, Divider, FeatureCard, MiniIcon, Pill, SectionTitle, Stat, cn } from "@/components/ui";
+import {
+  Badge,
+  Divider,
+  FeatureCard,
+  MiniIcon,
+  Pill,
+  SectionTitle,
+  Stat,
+  cn,
+} from "@/components/ui";
 import { waLink, PHONE_NUMBER_DISPLAY } from "@/lib/constants";
 import { MENU } from "@/lib/menu";
 import { PLANS, FAQ as FAQ_DATA } from "@/lib/plans";
@@ -53,12 +62,14 @@ function JsonLd() {
     servesCuisine: ["Indian", "Healthy", "Lucknowi"],
     priceRange: "₹₹",
     areaServed: "Lucknow",
-    url: process.env.NEXT_PUBLIC_SITE_URL || "https://aikitchen.in",
+    url: process.env.NEXT_PUBLIC_SITE_URL || "https://aikitchen.co",
     potentialAction: {
       "@type": "OrderAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: waLink("Hi AIKitchen! I want to order / start a meal plan."),
+        urlTemplate: waLink(
+          "Hi AIKitchen! I want to order / start a meal plan."
+        ),
         inLanguage: "en-IN",
         actionPlatform: [
           "http://schema.org/MobileWebPlatform",
@@ -155,11 +166,23 @@ function MealPlanBuilder() {
   const recommendation = useMemo(() => {
     const base =
       goal === "fat_loss"
-        ? { kcal: 1500, protein: 90, note: "higher protein, lower oil, steady portions" }
+        ? {
+            kcal: 1500,
+            protein: 90,
+            note: "higher protein, lower oil, steady portions",
+          }
         : goal === "muscle_gain"
-        ? { kcal: 2200, protein: 130, note: "calorie surplus with lean protein focus" }
+        ? {
+            kcal: 2200,
+            protein: 130,
+            note: "calorie surplus with lean protein focus",
+          }
         : goal === "medical"
-        ? { kcal: 1700, protein: 95, note: "clean rotation, simplified ingredients" }
+        ? {
+            kcal: 1700,
+            protein: 95,
+            note: "clean rotation, simplified ingredients",
+          }
         : { kcal: 1900, protein: 105, note: "balanced macros + variety" };
 
     const dietNote =
@@ -209,12 +232,15 @@ Please suggest a plan + pricing.`;
     <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur md:p-8">
       <div className="flex flex-col items-start justify-between gap-5 md:flex-row md:items-center">
         <div>
-          <div className="text-sm font-semibold text-amber-400">meal plan builder</div>
+          <div className="text-sm font-semibold text-amber-400">
+            meal plan builder
+          </div>
           <div className="mt-2 text-2xl font-semibold text-white">
             set your goal → get an instant plan direction
           </div>
           <p className="mt-2 max-w-2xl text-sm text-white/70">
-            This is a “smart preview”. Final plan gets tuned after your WhatsApp chat (timings, preferences, health notes).
+            This is a “smart preview”. Final plan gets tuned after your WhatsApp
+            chat (timings, preferences, health notes).
           </p>
         </div>
         <a
@@ -230,28 +256,70 @@ Please suggest a plan + pricing.`;
           <div>
             <div className="mb-2 text-sm font-semibold text-white">goal</div>
             <div className="flex flex-wrap gap-2">
-              <Pill active={goal === "fat_loss"} onClick={() => setGoal("fat_loss")}>fat loss</Pill>
-              <Pill active={goal === "muscle_gain"} onClick={() => setGoal("muscle_gain")}>muscle gain</Pill>
-              <Pill active={goal === "balance"} onClick={() => setGoal("balance")}>balanced</Pill>
-              <Pill active={goal === "medical"} onClick={() => setGoal("medical")}>medical-friendly</Pill>
+              <Pill
+                active={goal === "fat_loss"}
+                onClick={() => setGoal("fat_loss")}
+              >
+                fat loss
+              </Pill>
+              <Pill
+                active={goal === "muscle_gain"}
+                onClick={() => setGoal("muscle_gain")}
+              >
+                muscle gain
+              </Pill>
+              <Pill
+                active={goal === "balance"}
+                onClick={() => setGoal("balance")}
+              >
+                balanced
+              </Pill>
+              <Pill
+                active={goal === "medical"}
+                onClick={() => setGoal("medical")}
+              >
+                medical-friendly
+              </Pill>
             </div>
           </div>
 
           <div>
-            <div className="mb-2 text-sm font-semibold text-white">diet type</div>
+            <div className="mb-2 text-sm font-semibold text-white">
+              diet type
+            </div>
             <div className="flex flex-wrap gap-2">
-              <Pill active={diet === "veg"} onClick={() => setDiet("veg")}>veg</Pill>
-              <Pill active={diet === "eggetarian"} onClick={() => setDiet("eggetarian")}>eggetarian</Pill>
-              <Pill active={diet === "non-veg"} onClick={() => setDiet("non-veg")}>non-veg</Pill>
-              <Pill active={diet === "jain"} onClick={() => setDiet("jain")}>jain</Pill>
+              <Pill active={diet === "veg"} onClick={() => setDiet("veg")}>
+                veg
+              </Pill>
+              <Pill
+                active={diet === "eggetarian"}
+                onClick={() => setDiet("eggetarian")}
+              >
+                eggetarian
+              </Pill>
+              <Pill
+                active={diet === "non-veg"}
+                onClick={() => setDiet("non-veg")}
+              >
+                non-veg
+              </Pill>
+              <Pill active={diet === "jain"} onClick={() => setDiet("jain")}>
+                jain
+              </Pill>
             </div>
           </div>
 
           <div>
-            <div className="mb-2 text-sm font-semibold text-white">meals per day</div>
+            <div className="mb-2 text-sm font-semibold text-white">
+              meals per day
+            </div>
             <div className="flex flex-wrap gap-2">
               {[2, 3, 4].map((n) => (
-                <Pill key={n} active={meals === n} onClick={() => setMeals(n as MealCount)}>
+                <Pill
+                  key={n}
+                  active={meals === n}
+                  onClick={() => setMeals(n as MealCount)}
+                >
                   {n} meals
                 </Pill>
               ))}
@@ -272,29 +340,46 @@ Please suggest a plan + pricing.`;
         </div>
 
         <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/10 to-white/5 p-6">
-          <div className="text-sm font-semibold text-white/80">your instant plan preview</div>
+          <div className="text-sm font-semibold text-white/80">
+            your instant plan preview
+          </div>
 
           <div className="mt-4 grid grid-cols-2 gap-4">
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-2xl font-semibold text-white">{recommendation.kcal}</div>
-              <div className="mt-1 text-xs text-white/60">daily calories (est.)</div>
+              <div className="text-2xl font-semibold text-white">
+                {recommendation.kcal}
+              </div>
+              <div className="mt-1 text-xs text-white/60">
+                daily calories (est.)
+              </div>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-2xl font-semibold text-white">{recommendation.protein}g</div>
-              <div className="mt-1 text-xs text-white/60">daily protein (est.)</div>
+              <div className="text-2xl font-semibold text-white">
+                {recommendation.protein}g
+              </div>
+              <div className="mt-1 text-xs text-white/60">
+                daily protein (est.)
+              </div>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
-              <div className="text-2xl font-semibold text-white">{recommendation.perMeal}</div>
-              <div className="mt-1 text-xs text-white/60">calories per meal</div>
+              <div className="text-2xl font-semibold text-white">
+                {recommendation.perMeal}
+              </div>
+              <div className="mt-1 text-xs text-white/60">
+                calories per meal
+              </div>
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 p-4">
               <div className="text-sm font-semibold text-white">diet note</div>
-              <div className="mt-2 text-xs text-white/70">{recommendation.dietNote}</div>
+              <div className="mt-2 text-xs text-white/70">
+                {recommendation.dietNote}
+              </div>
             </div>
           </div>
 
           <div className="mt-4 rounded-2xl border border-white/10 bg-white/5 p-4 text-sm text-white/70">
-            <span className="font-semibold text-white">style:</span> {recommendation.note}
+            <span className="font-semibold text-white">style:</span>{" "}
+            {recommendation.note}
           </div>
 
           <a
@@ -320,12 +405,15 @@ function MenuPreview() {
     <div className="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur md:p-8">
       <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
         <div>
-          <div className="text-sm font-semibold text-amber-400">menu preview</div>
+          <div className="text-sm font-semibold text-amber-400">
+            menu preview
+          </div>
           <div className="mt-2 text-2xl font-semibold text-white">
             lucknow taste, but built for consistency
           </div>
           <p className="mt-2 max-w-2xl text-sm text-white/70">
-            Rotating menu + stable macros. You get variety without breaking your plan.
+            Rotating menu + stable macros. You get variety without breaking your
+            plan.
           </p>
         </div>
 
@@ -339,7 +427,11 @@ function MenuPreview() {
 
       <div className="mt-6 flex flex-wrap gap-2">
         {MENU.map((m, idx) => (
-          <Pill key={m.category} active={idx === active} onClick={() => setActive(idx)}>
+          <Pill
+            key={m.category}
+            active={idx === active}
+            onClick={() => setActive(idx)}
+          >
             {m.category}
           </Pill>
         ))}
@@ -352,7 +444,9 @@ function MenuPreview() {
             className="rounded-3xl border border-white/10 bg-white/5 p-5 transition hover:bg-white/10"
           >
             <div className="flex items-start justify-between gap-4">
-              <div className="text-base font-semibold text-white">{it.name}</div>
+              <div className="text-base font-semibold text-white">
+                {it.name}
+              </div>
               <div className="rounded-full bg-amber-400 px-3 py-1 text-xs font-semibold text-slate-950">
                 ₹{it.price}
               </div>
@@ -360,11 +454,15 @@ function MenuPreview() {
 
             <div className="mt-4 grid grid-cols-3 gap-3 text-xs text-white/70">
               <div className="rounded-2xl border border-white/10 bg-white/5 p-3 text-center">
-                <div className="text-sm font-semibold text-white">{it.kcal}</div>
+                <div className="text-sm font-semibold text-white">
+                  {it.kcal}
+                </div>
                 <div>kcal</div>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-3 text-center">
-                <div className="text-sm font-semibold text-white">{it.protein}</div>
+                <div className="text-sm font-semibold text-white">
+                  {it.protein}
+                </div>
                 <div>protein</div>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/5 p-3 text-center">
@@ -374,7 +472,9 @@ function MenuPreview() {
             </div>
 
             <a
-              href={waLink(`Hi AIKitchen! I want to order: ${it.name} (₹${it.price}).`)}
+              href={waLink(
+                `Hi AIKitchen! I want to order: ${it.name} (₹${it.price}).`
+              )}
               className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 transition hover:bg-white/90"
             >
               order this on whatsapp
@@ -454,7 +554,8 @@ export default function HomeOnePager() {
               </div>
 
               <div className="mt-6 text-xs text-white/55">
-                *pricing and delivery timing are subject to change — depends on your custom order.
+                *pricing and delivery timing are subject to change — depends on
+                your custom order.
               </div>
             </div>
 
@@ -663,7 +764,8 @@ export default function HomeOnePager() {
 
         <div className="mt-8 rounded-3xl border border-white/10 bg-white/5 p-6 text-sm text-white/70">
           <span className="font-semibold text-white">Strong opinion:</span>{" "}
-          subscriptions are good because they remove decision fatigue. Keep one subscription active to get the most out of healthy routine.
+          subscriptions are good because they remove decision fatigue. Keep one
+          subscription active to get the most out of healthy routine.
         </div>
       </section>
 
